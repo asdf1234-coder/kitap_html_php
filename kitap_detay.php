@@ -32,7 +32,7 @@
                         <div><?php echo $kitap["isim"]?></div>
                     </div>
                     <div class="yazar_yayinevi">
-                        <div class="yazar">yazar | </div>
+                        <div class="yazar"><?php echo $kitap["yazar"]?> | </div>
                         <div class="yayinevi_bilgi"><?php echo $kitap["yayinevi"]?>  | </div>
                         <div class="tur"><?php echo $kitap["tur"]?></div>
                     </div>
