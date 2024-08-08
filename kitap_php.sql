@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 07 Ağu 2024, 08:39:02
+-- Üretim Zamanı: 08 Ağu 2024, 07:44:02
 -- Sunucu sürümü: 10.4.32-MariaDB
 -- PHP Sürümü: 8.2.12
 
@@ -20,6 +20,24 @@ SET time_zone = "+00:00";
 --
 -- Veritabanı: `kitap_php`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `admin`
+--
+
+CREATE TABLE `admin` (
+  `admin_adi` varchar(100) NOT NULL,
+  `admin_sifre` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Tablo döküm verisi `admin`
+--
+
+INSERT INTO `admin` (`admin_adi`, `admin_sifre`) VALUES
+('Admin', 2222);
 
 -- --------------------------------------------------------
 
@@ -45,7 +63,7 @@ INSERT INTO `kitaplar` (`id`, `isim`, `resim`, `yayinevi`, `tur`, `yazar`, `ucre
 (1, 'faiz lobisi', 'faiz lobisi.jpg', 'A yayınevi', 'finans', 'süleyman yaşar', 73),
 (2, 'mühendis ve hayat', 'mühendis ve hayat.jpg', 'B yayınevi', 'edebiyat', 'yusuf tosun', 63),
 (3, 'temel ilkeler', 'temel ilkeler.jpg', 'C yayınevi', 'edebiyat', 'ali ünal', 550),
-(4, 'mühendis ve hayat', 'mühendis ve hayat.jpg', 'B yayınevi', 'edebiyat', 'yusuf yosun', 63);
+(4, 'mühendis ve hayat', 'mühendis ve hayat.jpg', 'B yayınevi', 'edebiyat', 'yusuf tosun', 63);
 
 --
 -- Dökümü yapılmış tablolar için indeksler
