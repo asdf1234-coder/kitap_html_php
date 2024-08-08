@@ -47,8 +47,8 @@ a {
     font-family: Arial, Helvetica, sans-serif;
 }
 .fiyat {
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 3px;
+    margin-bottom: 3px;
 }
 .yayinlar {
     display: flex;
@@ -121,4 +121,53 @@ form {
     padding-left: 10px;
     padding-right: 10px;
     margin-bottom: 5px;
+}
+.hheader {
+    display: flex;
+    background-color: orange;
+    height: 30px;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.container_filtreleme_kontrol {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 15px;
+}
+.eklesil {
+    padding: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    height: 30px;
+    width: 50xp;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.sil {
+    background-color: red;
+}
+.ekle {
+    background-color: greenyellow;
+}
+.butonlar {
+margin-left: 5px;
+margin-bottom: 5px;
+}
+.button_div {
+    visibility: hidden;
+    width: 80px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: red;
+    height: 24px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.buton_kitap {
+    display: flex;
+    justify-content: center;
+}
+.butonlar_gizli {
+    visibility: hidden;
 }
