@@ -68,7 +68,7 @@
                 <?php if (($get_tur == $kitap["tur"]) && ($get_yayin == $kitap["yayinevi"]) && ($get_yazar == $kitap["yazar"]) && ($get_min < $kitap["ucret"] && $get_max > $kitap["ucret"])): ?>
                     <a href = "kitap_detay.php?id=<?php echo $kitap["id"]?>">
                         <div class="kitap">
-                            <div class="ust"><img src="img/<?php echo $kitap["resim"]?>" height="100%" width="100%"></div>
+                            <div class="ust"><img src="<?php echo $kitap["resim"]?>" height="100%" width="100%"></div>
                             <div class="yazar_isim">
                                 <div class="alt fiyat"><?php echo $kitap["ucret"]?> TL</div>
                                 <div class="alt"><?php echo $kitap["isim"] ?></div>
@@ -84,5 +84,6 @@
             <?php endforeach; ?>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
