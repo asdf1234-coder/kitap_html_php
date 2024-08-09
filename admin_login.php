@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="adminform">
-        <form action="admin_kontrol_paneli.php" method="get">
+        <form action="admin_kontrol_paneli.php" method="post">
             <div class ="container_filtreleme">
                 <input type="text" name="adminadi" placeholder="kullanıcı ismini giriniz">
                 <input type="password" name="adminparola" placeholder="parlolanızı giriniz">
