@@ -25,7 +25,7 @@
         <?php if ($kitap["id"] == $get_id): ?>
             <div class="container">
                 <div class="img_container">
-                    <div class="resim"><img src="img/<?php echo $kitap["resim"]?>" width="100%"></div>
+                    <div class="resim"><img src="<?php echo $kitap["resim"]?>" width="100%"></div>
                 </div>
                 <div class="text_container">
                     <div class="baslik">
