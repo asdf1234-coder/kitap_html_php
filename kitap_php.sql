@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: localhost
--- Üretim Zamanı: 08 Ağu 2024, 07:44:02
+-- Üretim Zamanı: 09 Ağu 2024, 07:55:11
 -- Sunucu sürümü: 10.4.32-MariaDB
 -- PHP Sürümü: 8.2.12
 
@@ -60,10 +60,9 @@ CREATE TABLE `kitaplar` (
 --
 
 INSERT INTO `kitaplar` (`id`, `isim`, `resim`, `yayinevi`, `tur`, `yazar`, `ucret`) VALUES
-(1, 'faiz lobisi', 'faiz lobisi.jpg', 'A yayınevi', 'finans', 'süleyman yaşar', 73),
-(2, 'mühendis ve hayat', 'mühendis ve hayat.jpg', 'B yayınevi', 'edebiyat', 'yusuf tosun', 63),
-(3, 'temel ilkeler', 'temel ilkeler.jpg', 'C yayınevi', 'edebiyat', 'ali ünal', 550),
-(4, 'mühendis ve hayat', 'mühendis ve hayat.jpg', 'B yayınevi', 'edebiyat', 'yusuf tosun', 63);
+(1, 'faiz lobisi', 'https://img.kitapyurdu.com/v1/getImage/fn:299193/wh:true/wi:800', 'A yayınevi', 'finans', 'süleyman yaşar', 73),
+(2, 'mühendis ve hayat', 'https://img.kitapyurdu.com/v1/getImage/fn:11141188/wh:true/wi:800', 'B yayınevi', 'edebiyat', 'yusuf tosun', 63),
+(3, 'temel ilkeler', 'https://img.kitapyurdu.com/v1/getImage/fn:11903895/wh:true/wi:800', 'C yayınevi', 'edebiyat', 'ali ünal', 550);
 
 --
 -- Dökümü yapılmış tablolar için indeksler
@@ -83,7 +82,7 @@ ALTER TABLE `kitaplar`
 -- Tablo için AUTO_INCREMENT değeri `kitaplar`
 --
 ALTER TABLE `kitaplar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
