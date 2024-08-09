@@ -1,13 +1,12 @@
 <?php $get_isim = $_POST["adminadi"]?>
-<?php if (empty($get_isim)) {
-    echo "kullanıcı adı boş bırakılamaz tekrar deneyiniz";
-    exit;
-}?>
-<?php $get_parola = $_POST["adminparola"]?>
-<?php if (empty($get_parola)) {
-    echo "parola boş bırakılamaz tekrar deneyiniz";
-    exit;
-}?>
+<?php $get_parola = $_POST["adminparola"] ?>
+<?php $get_silinecek = $_GET["silinecek"]?>
+<?php
+if(!empty($get_silinecek)) {
+    $silme = true;
+}
+?>
+
 <?php $get_yayin = $_GET["yayinevi"] ?>
 <?php if (empty($get_yayin)) $get_yayin_kontrol = True ?>
 <?php $get_tur = $_GET["tur"]?>
@@ -31,20 +30,30 @@
     $quary_kitap = "SELECT * from kitaplar";
     $result_kitap = mysqli_query($baglanti, $quary_kitap);
     $tum_kitaplar = mysqli_fetch_all($result_kitap, MYSQLI_ASSOC);
+
+    if($silme == true) {
+        $silme_islemi = "DELETE FROM kitaplar WHERE `kitaplar`.`id` = $get_silinecek";
+        $isleme = mysqli_query($baglanti,$silme_islemi);
+    }
     mysqli_close($baglanti);
 ?>
-<?php foreach($profiller as $profil) {
-    if ($profil["admin_adi"] == $get_isim) {
-        $isim = true;
-        $giris = false;
+<?php session_start();?>
+<?php
+foreach($profiller as $profil) {
+    if ($profil["admin_adi"] == $get_isim && $profil["admin_sifre"] == $get_parola) {
+        // Kullanıcıyı oturum başlat
+        $_SESSION['loggedin'] = true;
+        $_SESSION['kullanici'] = $get_isim;
+        $_SESSION['parola'] = $get_parola;
     }
-    if ($profil["admin_sifre"] == $get_parola) {
-        $parola = true;
-        $giris = false;
-    }
-    if (($parola == true) && ($isim == true)) {
-        $giris = true;
-    }
+}
+if($_SESSION['loggedin'] == true) {
+    $giris = true;
+}
+?>
+<?php if (!isset($_SESSION['loggedin'])) {
+    echo "giris basarısız";
+    exit;
 }?>
 <?php if ($giris == false) {
     echo "parola yada şifre yanlış lütfen tekrar deneyiniz";
@@ -74,8 +83,6 @@
             <div class="form">
                 <form action="admin_kontrol_paneli.php" method="get">
                     <div class ="container_filtreleme_kontrol">
-                        <input type="text" name="adminadi" placeholder="kullanıcı ismini giriniz">
-                        <input type="password" name="adminparola" placeholder="parlolanızı giriniz">
                         <input type="text" name="yayinevi" placeholder="yayınevi giriniz">
                         <input type="text" name="tur" placeholder="tür giriniz">
                         <input type="text" name="yazar" placeholder="yazar giriniz">
@@ -109,7 +116,7 @@
                                 <div class="yazar_isim">
                                     <div class="alt fiyat"><?php echo $kitap["ucret"]?> TL</div>
                                     <div class="alt"><?php echo $kitap["isim"] ?></div>
-                                    <div class="buton_kitap"><button class="button_div alt">SİL</button></div>
+                                    <a href="admin_kontrol_paneli.php?silinecek=<?php echo $kitap["id"]?>"><div class="buton_kitap"><button class="button_div alt" name="silme">SİL</button></div></a>
                                 </div>
                             </div>
                         </a>
