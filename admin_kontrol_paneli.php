@@ -66,7 +66,7 @@
             <a href="admin_login.php"><button class="buton">ADMIN LOGIN</button></a>
         </div>
         <div class="butonlar">
-            <button class="eklesil ekle">EKLE</button>
+            <a href="kitap_ekle.php"><button class="eklesil ekle">EKLE</button></a>
             <button class="eklesil sil" onclick="showElements()">SİL</button>
             <button class="eklesil butonlar_gizli" onclick="hiddenElements()">BUTONLARI GİZLE</button>
         </div>
@@ -105,7 +105,7 @@
                     <?php if (($get_tur == $kitap["tur"]) && ($get_yayin == $kitap["yayinevi"]) && ($get_yazar == $kitap["yazar"]) && ($get_min < $kitap["ucret"] && $get_max > $kitap["ucret"])): ?>
                         <a href = "kitap_detay.php?id=<?php echo $kitap["id"]?>">
                             <div class="kitap">
-                                <div class="ust"><img src="img/<?php echo $kitap["resim"]?>" height="100%" width="100%"></div>
+                                <div class="ust"><img src="<?php echo $kitap["resim"]?>" height="100%" width="100%"></div>
                                 <div class="yazar_isim">
                                     <div class="alt fiyat"><?php echo $kitap["ucret"]?> TL</div>
                                     <div class="alt"><?php echo $kitap["isim"] ?></div>
