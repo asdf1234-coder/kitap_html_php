@@ -1,9 +1,9 @@
-<?php $get_isim = $_GET["adminadi"]?>
+<?php $get_isim = $_POST["adminadi"]?>
 <?php if (empty($get_isim)) {
     echo "kullanıcı adı boş bırakılamaz tekrar deneyiniz";
     exit;
 }?>
-<?php $get_parola = $_GET["adminparola"]?>
+<?php $get_parola = $_POST["adminparola"]?>
 <?php if (empty($get_parola)) {
     echo "parola boş bırakılamaz tekrar deneyiniz";
     exit;
