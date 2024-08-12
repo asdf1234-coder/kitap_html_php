@@ -8,13 +8,21 @@ $database = "kitap_php";
 $baglanti = mysqli_connect($host,$username,$password,$database);
 
 if(isset($_POST["ekle"])) {
+    
+    $takefile =  $_FILES["file"];
+    $filename =  $takefile["name"];
+    $filetpmname = $takefile["tmp_name"];
     $isim = $_POST["kitapismi"];
     $fiyat = $_POST["kitapfiyati"];
     $yayin = $_POST["yayinevi"];
     $tur = $_POST["tur"];
     $yazar = $_POST["yazar"];
-    $gorsel = $_POST["gorsel"];
 
+    $gorsel = $filename; 
+    
+    $mypath="img/".$filename;
+
+    move_uploaded_file($filetpmname, $mypath);
     $ekle = "INSERT INTO kitaplar (isim, resim, yayinevi, tur, yazar, ucret) VALUES ('$isim','$gorsel','$yayin','$tur','$yazar','$fiyat')";
 
     $result = mysqli_query($baglanti,$ekle);
@@ -25,6 +33,7 @@ if(isset($_POST["ekle"])) {
     else {
         echo '<div class="basarisiz">kitap eklenemedi</div>';
     }
+
 }
 ?>
 <!DOCTYPE html>
@@ -36,14 +45,14 @@ if(isset($_POST["ekle"])) {
     <link rel="stylesheet" type="text/css" href="kitap_ekle.css" />
 </head>
 <body>
-    <form action="kitap_ekle.php" method="post">
+    <form action="kitap_ekle.php" method="post" enctype="multipart/form-data">
         <div class ="container_filtreleme_kontrol">
             <input type="text" name="kitapismi" placeholder="kitap ismini giriniz">
             <input type="text" name="kitapfiyati" placeholder="kitap fiyatını giriniz">
             <input type="text" name="yayinevi" placeholder="yayınevi giriniz">
             <input type="text" name="tur" placeholder="tür giriniz">
             <input type="text" name="yazar" placeholder="yazar giriniz">
-            <input type="text" name="gorsel" placeholder="gorsel linki giriniz">
+            <input type="file" name="file" placeholder="gorsel linki giriniz">
             <button type="submit" class="button" name="ekle">EKLE</button>
         </div>
     </form>
