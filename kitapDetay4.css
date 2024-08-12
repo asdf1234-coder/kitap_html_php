@@ -25,13 +25,38 @@
     display: flex;
     margin-bottom: 20px;
 }
+.tur {
+    width: 110px;
+}
 .yazar {
     margin-right: 5px;
+    width: 100px;
 }
 .aciklama {
     display: flex;
     justify-content: center;
 }
 .yayinevi_bilgi {
+    margin-right: 5px;
+    width: 80px;
+}
+.flex {
+    display: flex;
+}
+.duzenle {
+    width: 150px;
+    height: 30px;
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.yazar2 {
+    margin-right: 5px;
+}
+.yayinevi_bilgi2 {
     margin-right: 5px;
 }
