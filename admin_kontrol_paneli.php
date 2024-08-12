@@ -27,21 +27,19 @@ if(!empty($get_silinecek)) {
     $quary = "SELECT * from admin";
     $result = mysqli_query($baglanti, $quary);
     $profiller = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    $quary_kitap = "SELECT * from kitaplar";
-    $result_kitap = mysqli_query($baglanti, $quary_kitap);
-    $tum_kitaplar = mysqli_fetch_all($result_kitap, MYSQLI_ASSOC);
-
     if($silme == true) {
         $silme_islemi = "DELETE FROM kitaplar WHERE `kitaplar`.`id` = $get_silinecek";
         $isleme = mysqli_query($baglanti,$silme_islemi);
     }
+    $quary_kitap = "SELECT * from kitaplar";
+    $result_kitap = mysqli_query($baglanti, $quary_kitap);
+    $tum_kitaplar = mysqli_fetch_all($result_kitap, MYSQLI_ASSOC);
     mysqli_close($baglanti);
 ?>
 <?php session_start();?>
 <?php
 foreach($profiller as $profil) {
     if ($profil["admin_adi"] == $get_isim && $profil["admin_sifre"] == $get_parola) {
-        // Kullanıcıyı oturum başlat
         $_SESSION['loggedin'] = true;
         $_SESSION['kullanici'] = $get_isim;
         $_SESSION['parola'] = $get_parola;
@@ -65,7 +63,7 @@ if($_SESSION['loggedin'] == true) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Kontrol Paneli</title>
-        <link rel="stylesheet" type="text/css" href="style9.css" />
+        <link rel="stylesheet" type="text/css" href="style12.css" />
     </head>
     <body>
         <div class="hheader">
@@ -76,11 +74,9 @@ if($_SESSION['loggedin'] == true) {
         </div>
         <div class="butonlar">
             <a href="kitap_ekle.php"><button class="eklesil ekle">EKLE</button></a>
-            <button class="eklesil sil" onclick="showElements()">SİL</button>
-            <button class="eklesil butonlar_gizli" onclick="hiddenElements()">BUTONLARI GİZLE</button>
         </div>
         <div class="kitap_container">
-            <div class="form">
+            <div class="form_kontrol">
                 <form action="admin_kontrol_paneli.php" method="get">
                     <div class ="container_filtreleme_kontrol">
                         <input type="text" name="yayinevi" placeholder="yayınevi giriniz">
@@ -112,11 +108,14 @@ if($_SESSION['loggedin'] == true) {
                     <?php if (($get_tur == $kitap["tur"]) && ($get_yayin == $kitap["yayinevi"]) && ($get_yazar == $kitap["yazar"]) && ($get_min < $kitap["ucret"] && $get_max > $kitap["ucret"])): ?>
                         <a href = "kitap_detay.php?id=<?php echo $kitap["id"]?>">
                             <div class="kitap">
-                                <div class="ust"><img src="<?php echo $kitap["resim"]?>" height="100%" width="100%"></div>
+                                <div class="ust"><img src="img/<?php echo $kitap["resim"]?>" height="100%" width="100%"></div>
                                 <div class="yazar_isim">
                                     <div class="alt fiyat"><?php echo $kitap["ucret"]?> TL</div>
                                     <div class="alt"><?php echo $kitap["isim"] ?></div>
-                                    <a href="admin_kontrol_paneli.php?silinecek=<?php echo $kitap["id"]?>"><div class="buton_kitap"><button class="button_div alt" name="silme">SİL</button></div></a>
+                                    <div class="flex">
+                                        <a href="admin_kontrol_paneli.php?silinecek=<?php echo $kitap["id"]?>"><div class="buton_kitap"><button class="button_div alt" name="silme">SİL</button></div></a>
+                                        <a href="duzenleme.php?duzenlenecek=<?php echo $kitap["id"]?>"><div class="buton_kitap"><button class="button_duzenle alt" name="silme">DÜZENLE</button></div></a>
+                                    </div>
                                 </div>
                             </div>
                         </a>
