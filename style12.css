@@ -28,14 +28,17 @@ a {
     margin-right: 5px;
     border: 1px solid #000;
     display: flex;
+    flex-wrap: wrap;
     padding: 5px;
 }
 .kitap {
-    width: 160px;
+    width: 159px;
     height: 250px;
     border: 1px solid #000;
     margin-right: 5px;
     border-radius: 5px;
+    margin-bottom: 5px;
+    position: relative;
 }
 .ust {
     width: 100%;
@@ -47,8 +50,8 @@ a {
     font-family: Arial, Helvetica, sans-serif;
 }
 .fiyat {
-    margin-top: 3px;
-    margin-bottom: 3px;
+    margin-top: 2px;
+    margin-bottom: -1px;
 }
 .yayinlar {
     display: flex;
@@ -77,6 +80,7 @@ a {
     margin-left: 5px;
 }
 .container_filtreleme {
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -85,8 +89,6 @@ input {
     width: 150px;
     height: 20px;
     margin-bottom: 10px;
-    margin-left: auto;
-    margin-right: auto;
 }
 .giris {
     margin-bottom: 30px;
@@ -102,11 +104,7 @@ button {
     border: 1px solid #000;
     border-radius: 8px;
 }
-form {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
-}
+
 .kitap_container {
     display: flex;
 }
@@ -115,6 +113,7 @@ form {
     padding-left: 10px;
     padding-right: 10px;
     border: 1px solid #000;
+    position: sticky;
 }
 .adminform {
     margin-left: 5px;
@@ -151,23 +150,78 @@ form {
     background-color: greenyellow;
 }
 .butonlar {
-margin-left: 5px;
-margin-bottom: 5px;
+    margin-left: 5px;
+    margin-bottom: 5px;
 }
 .button_div {
-    visibility: hidden;
-    width: 80px;
+    visibility: visible;
+    width: 72px;
     margin-left: 5px;
     margin-right: 5px;
     background-color: red;
     height: 24px;
     margin-left: auto;
     margin-right: auto;
+    position: absolute;
+    bottom: 3px;
+    left: 3px;
+    cursor: pointer;
 }
 .buton_kitap {
     display: flex;
     justify-content: center;
 }
 .butonlar_gizli {
-    visibility: hidden;
+    visibility: visible;
+}
+.button_duzenle {
+    visibility: visible;
+    width: 72px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: orange;
+    height: 24px;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+    cursor: pointer;
+}
+.flex {
+    display: flex;
+}
+.container_filtreleme_login {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.button_login {
+    width: 159px;
+    height: 20px;
+    background-color: orange;
+    border: 1px solid #000;
+    border-radius: 8px;
+}
+.adminform {
+    margin-left: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+}
+.form_kontrol {
+    margin-left: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid #000;
+    position: sticky;
+}
+.container_filtreleme_kontrol {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 15px;
+    margin-top: 10px;
 }
