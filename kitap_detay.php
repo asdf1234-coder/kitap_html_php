@@ -74,6 +74,14 @@
         $quary = "SELECT * from kitaplar";
         $result = mysqli_query($baglanti, $quary);
         $tum_kitaplar = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        foreach($tum_kitaplar as $kitap1){
+            if ($kitap1["id"] == $get_id){
+                $duzenleme = $kitap1["populerlik"];
+            }
+        }
+        $duzenleme = $duzenleme+1;
+        $sorgu = "UPDATE `kitaplar` SET `populerlik` = '$duzenleme' WHERE `kitaplar`.`id` = $get_id;";
+        $uygulama = mysqli_query($baglanti, $sorgu);
         mysqli_close($baglanti);
     ?>
     <?php foreach($tum_kitaplar as $kitap): ?>
@@ -94,6 +102,7 @@
                         <div class="cizgi bilgi"> | </div>
                         <p class="par"> </p>
                         <div class="tur"><?php echo $kitap["tur"]?></div>
+                        <div class="bilgi">Tıklanma: <?php echo $kitap["populerlik"]?></div>
                     </div>
                     <div class="aciklama">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut consequuntur dicta dignissimos quam a unde natus? Doloremque accusantium quae magni libero minus officiis corporis porro temporibus iusto culpa reprehenderit suscipit facilis sunt dolorem placeat quibusdam quasi nisi quis, est vel! Obcaecati, rerum voluptate amet hic odio repellat commodi excepturi consectetur corporis mollitia natus quam maxime eum eveniet sapiente fuga dicta animi autem. At quibusdam perferendis aliquid deleniti ut harum inventore similique</div>
                 </div>
