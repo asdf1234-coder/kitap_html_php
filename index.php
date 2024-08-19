@@ -22,6 +22,59 @@
     $tum_kitaplar = mysqli_fetch_all($result, MYSQLI_ASSOC);
     mysqli_close($baglanti);
 ?>
+<?php $populerlik = []?>
+<?php $resimler = []?>
+<?php $top10 = []?>
+<?php foreach($tum_kitaplar as $kitap1){
+        $x = $kitap1["populerlik"];
+        $populerlik[] = $x;
+        $resimler[] = $kitap1["resim"];
+    }
+    sort($populerlik);
+
+    function addLastNElements($sourceArray, $n, &$destinationArray) {
+        $length = count($sourceArray);
+        
+        if ($length <= $n) {
+            $destinationArray = array_merge($destinationArray, $sourceArray);
+        } else {
+            $lastNElements = array_slice($sourceArray, -$n);
+            $destinationArray = array_merge($destinationArray, $lastNElements);
+        }
+    }
+
+    addLastNElements($populerlik, 6, $top10);
+
+    // print_r($top10);
+
+    $birinci = null;
+    $ikinci = null;
+    $ucuncu = null;
+    $dorduncu = null;
+    $besinci = null;
+
+    foreach($tum_kitaplar as $kitap2){
+        if (($kitap2["populerlik"] == $top10[1]) && ($birinci == null)) {
+            $birinci = $kitap2["resim"];
+        }
+        if (($kitap2["populerlik"] == $top10[2]) && ($ikinci == null)) {
+            $ikinci = $kitap2["resim"];
+        }
+        if (($kitap2["populerlik"] == $top10[3]) && ($ucuncu == null)) {
+            $ucuncu = $kitap2["resim"];
+        }
+        if (($kitap2["populerlik"] == $top10[4]) && ($dorduncu == null)) {
+            $dorduncu = $kitap2["resim"];
+        }
+        if (($kitap2["populerlik"] == $top10[5]) && ($besinci == null)) {
+            $besinci = $kitap2["resim"];
+        }
+    }
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,6 +118,9 @@
             .tum_kitaplar {
                 width: 100%;
             }
+        }
+        .d-block {
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -121,6 +177,25 @@
         </form>
         <a href="admin_login.php"><button class="buton">ADMIN LOGIN</button></a>
     </div>-->
+    <div id="carouselExampleSlidesOnly" class="carousel slide mb-2" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="img/<?php echo $besinci?>" class="d-block mx-auto" alt="..." width="180rem">
+            </div>
+            <div class="carousel-item">
+                <img src="img/<?php echo $dorduncu?>" class="d-block mx-auto" alt="..." width="180rem">
+            </div>
+            <div class="carousel-item">
+                <img src="img/<?php echo $ucuncu?>" class="d-block mx-auto" alt="..." width="180rem">
+            </div>
+            <div class="carousel-item">
+                <img src="img/<?php echo $ikinci?>" class="d-block mx-auto" alt="..." width="180rem">
+            </div>
+            <div class="carousel-item">
+                <img src="img/<?php echo $birinci?>" class="d-block mx-auto" alt="..." width="180rem">
+            </div>
+        </div>
+    </div>
     <div class="kitap_container col-12">
         <form class="mx-1 p-1 col-2 border filtre">
             <div class="mb-1">
